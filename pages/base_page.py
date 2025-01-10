@@ -2,6 +2,9 @@ import allure
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
+from urls import *
+
+
 class BasePage:
     def __init__(self, driver):
         self.driver = driver
@@ -32,3 +35,7 @@ class BasePage:
     @allure.step('Получить URL текущей страницы')
     def get_current_url(self):
         return self.driver.current_url
+
+    @allure.step("Открыть Главную страницу")
+    def open_base_page(self):
+        self.driver.get(BASE_URL)
