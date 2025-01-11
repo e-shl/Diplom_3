@@ -2,7 +2,6 @@ import allure
 
 from locators.profile_page_locators import *
 from pages.base_page import BasePage
-from urls import *
 
 
 class ProfilePage (BasePage):

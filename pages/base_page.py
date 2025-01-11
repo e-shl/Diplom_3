@@ -18,7 +18,7 @@ class BasePage:
     def open_login_page(self):
         self.driver.get(LOGIN_PAGE_URL)
 
-    @allure.step("Открыть страницу Личный кабинет")
+    @allure.step("Открыть страницу Лента Заказов")
     def open_order_feed_page(self):
         self.driver.get(ORDER_FEED_PAGE_URL)
 
@@ -39,9 +39,14 @@ class BasePage:
         WebDriverWait(self.driver, 200).until(expected_conditions.element_to_be_clickable(locator))
         return self.driver.find_element(*locator)
 
+    @allure.step('Получить кликабельный элемент')
+    def find_all_elements(self, locator):
+        self.find_clickable_element(locator)
+        return self.driver.find_elements(*locator)
+
     @allure.step('Ждать исчезновения элемента')
     def wait_invisibility_element(self, locator):
-        return WebDriverWait(self.driver, 5).until(expected_conditions.invisibility_of_element_located(locator))
+        return WebDriverWait(self.driver, 30).until(expected_conditions.invisibility_of_element_located(locator))
 
     @allure.step('Прокрутить к элементу')
     def scroll_to_element(self, locator):

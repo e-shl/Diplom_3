@@ -1,4 +1,3 @@
-import pytest
 import allure
 
 from locators.login_page_locators import *

@@ -1,11 +1,7 @@
-import pytest
 import allure
-from selenium.webdriver import ActionChains
 
 from locators.base_page_locators import *
-from locators.profile_page_locators import *
 from pages.designer_page import DesignerPage
-from tests_data import *
 from urls import *
 
 @allure.suite("Проверка основного функционала (Конструктор)")
@@ -46,7 +42,7 @@ class TestDesignerFunctional:
         designer_page = DesignerPage(driver)
         designer_page.open_base_page()
         designer_page.move_ingredient_to_order()
-        assert designer_page.find_clickable_element(COUNTER_INGREDIENT).text == "2"
+        assert designer_page.get_text(COUNTER_INGREDIENT) == "2"
 
     @allure.title('Тест залогиненный пользователь может оформить заказ')
     def test_logined_user_can_place_order(self, authorization):
