@@ -20,7 +20,7 @@ class LoginPage (BasePage):
         self.find_clickable_element(FILED_EMAIL).send_keys(email)
 
     @allure.step("Нажать кнопку Восстановить")
-    def click_link_forgot_password(self):
+    def click_button_forgot_password(self):
         self.find_clickable_element(BUTTON_FORGOT_PASSWORD).click()
 
     @allure.step("Заполнить поле Пароль")

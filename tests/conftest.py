@@ -12,12 +12,12 @@ from tests_data import *
 def driver(request):
     options = webdriver.ChromeOptions()
     options.add_argument("--window-size=1920,1080")
-    # options.add_argument('--headless')
+    options.add_argument('--headless')
     driver = webdriver.Chrome(options=options)
     if request.param == 'firefox':
         options = webdriver.FirefoxOptions()
         options.add_argument("--window-size=1920,1080")
-        # options.add_argument('--headless')
+        options.add_argument('--headless')
         driver = webdriver.Firefox(options=options)
     driver.implicitly_wait(5)
     yield driver

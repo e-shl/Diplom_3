@@ -21,7 +21,7 @@ class DesignerPage (BasePage):
     def move_ingredient_to_order(self):
         ingredient = self.find_clickable_element(COUNTER_INGREDIENT)
         order = self.find_clickable_element(SPACE_ORDER)
-        ActionChains(self.driver).drag_and_drop(ingredient, order).release(order).perform()
+        ActionChains(self.driver).drag_and_drop(ingredient, order).pause(2).release(order).pause(2).perform()
 
     @allure.step("Нажать кнопку Оформить заказ")
     def click_place_order(self):
