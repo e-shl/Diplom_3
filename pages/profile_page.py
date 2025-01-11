@@ -11,10 +11,6 @@ class ProfilePage (BasePage):
     def click_button_header_profile(self):
         self.find_clickable_element(BUTTON_LINK_PROFILE).click()
 
-    @allure.step("Открыть страницу Личный кабинет")
-    def open_profile_page(self):
-        self.driver.get(PROFILE_PAGE_URL)
-
     @allure.step("Нажать кнопку Личный кабинет")
     def click_order_history(self):
         self.find_clickable_element(BUTTON_ORDER_HISTORY).click()

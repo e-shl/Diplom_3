@@ -2,7 +2,6 @@ import pytest
 import allure
 
 from locators.login_page_locators import *
-from pages.base_page import BasePage
 from pages.login_page import LoginPage
 from tests_data import *
 from urls import *
@@ -25,7 +24,7 @@ class TestForgotPassword:
         login_page.click_link_forgot_password()
         assert login_page.find_clickable_element(BUTTON_SAVE) and login_page.get_current_url() == RESET_PASSWORD_PAGE_URL
 
-    @allure.title('Клик по кнопке показать/скрыть пароль делает поле активным — подсвечивает его')
+    @allure.title('Тест клик по кнопке показать/скрыть пароль делает поле активным — подсвечивает его')
     def test_button_show_password(self, driver):
         login_page = LoginPage(driver)
         login_page.open_forgot_password_page()

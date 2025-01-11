@@ -7,10 +7,6 @@ from urls import *
 
 class LoginPage (BasePage):
 
-    @allure.step("Открыть страницу Войти")
-    def open_login_page(self):
-        self.driver.get(LOGIN_PAGE_URL)
-
     @allure.step("Нажать ссылку Восстановить пароль")
     def click_link_forgot_password(self):
         self.find_clickable_element(BUTTON_LINK_FORGOT_PASSWORD).click()
