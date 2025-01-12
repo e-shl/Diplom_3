@@ -8,7 +8,7 @@ from pages.login_page import LoginPage
 from tests_data import *
 
 
-@pytest.fixture(params=['firefox'])
+@pytest.fixture(params=['chrome', 'firefox'])
 def driver(request):
     if request.param == 'chrome':
         options = webdriver.ChromeOptions()
@@ -20,7 +20,7 @@ def driver(request):
         options.add_argument("--window-size=1920,1080")
         options.add_argument('--headless')
         driver = webdriver.Firefox(options=options)
-    driver.implicitly_wait(10)
+    driver.implicitly_wait(3)
     yield driver
     driver.quit()
 

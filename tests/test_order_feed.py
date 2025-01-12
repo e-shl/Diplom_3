@@ -47,6 +47,6 @@ class TestOrderFeed:
     def test_new_order_have_in_work(self, authorization):
         order_feed_page = DesignerPage(authorization)
         new_number_order = order_feed_page.create_order()
-        order_feed_page.open_order_feed_page()
+        order_feed_page.click_button_header_order_feed()
         order_feed_page.wait_invisibility_element(ALL_ORDERS_READY)
         assert new_number_order in order_feed_page.get_text(ORDERS_IN_WORK)

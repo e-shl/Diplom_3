@@ -22,7 +22,27 @@ class DesignerPage (BasePage):
     def move_ingredient_to_order(self):
         ingredient = self.find_clickable_element(ELEMENT_INGREDIENT)
         order = self.find_clickable_element(SPACE_ORDER)
-        ActionChains(self.driver).pause(5).click_and_hold(ingredient).move_to_element(order).release(order).perform()
+        self.driver.execute_script(
+            """
+            const source = arguments[0];
+            const target = arguments[1];
+
+            const dataTransfer = new DataTransfer();
+            const dragStartEvent = new DragEvent('dragstart', { bubbles: true, cancelable: true, dataTransfer });
+            source.dispatchEvent(dragStartEvent);
+
+            const dragOverEvent = new DragEvent('dragover', { bubbles: true, cancelable: true, dataTransfer });
+            target.dispatchEvent(dragOverEvent);
+
+            const dropEvent = new DragEvent('drop', { bubbles: true, cancelable: true, dataTransfer });
+            target.dispatchEvent(dropEvent);
+
+            const dragEndEvent = new DragEvent('dragend', { bubbles: true, cancelable: true, dataTransfer });
+            source.dispatchEvent(dragEndEvent);
+            """,
+            ingredient,
+            order
+        )
 
     @allure.step("Нажать кнопку Оформить заказ")
     def click_place_order(self):
