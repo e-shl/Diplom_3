@@ -20,7 +20,7 @@ def driver(request):
         options.add_argument("--window-size=1920,1080")
         options.add_argument('--headless')
         driver = webdriver.Firefox(options=options)
-    driver.implicitly_wait(5)
+    driver.implicitly_wait(10)
     yield driver
     driver.quit()
 

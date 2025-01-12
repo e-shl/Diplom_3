@@ -1,6 +1,5 @@
 import allure
 
-from locators.base_page_locators import *
 from locators.login_page_locators import *
 from pages.login_page import LoginPage
 from tests_data import *
@@ -29,7 +28,7 @@ class TestForgotPassword:
         login_page = LoginPage(driver)
         login_page.open_forgot_password_page()
         login_page.send_email(BASE_EMAIL)
-        login_page.click_link_forgot_password()
+        login_page.click_button_forgot_password()
         login_page.find_clickable_element(BUTTON_SAVE)
         login_page.send_password(BASE_EMAIL)
         login_page.click_show_password()

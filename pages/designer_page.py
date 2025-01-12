@@ -19,9 +19,9 @@ class DesignerPage (BasePage):
 
     @allure.step("Перенос ингридиента в Заказ")
     def move_ingredient_to_order(self):
-        ingredient = self.find_clickable_element(COUNTER_INGREDIENT)
+        ingredient = self.find_clickable_element(ELEMENT_INGREDIENT)
         order = self.find_clickable_element(SPACE_ORDER)
-        ActionChains(self.driver).drag_and_drop(ingredient, order).pause(2).release(order).pause(2).perform()
+        ActionChains(self.driver).pause(5).click_and_hold(ingredient).move_to_element(order).release(order).perform()
 
     @allure.step("Нажать кнопку Оформить заказ")
     def click_place_order(self):
@@ -36,7 +36,7 @@ class DesignerPage (BasePage):
         self.open_base_page()
         self.move_ingredient_to_order()
         self.click_place_order()
-        self.wait_invisibility_element(LOADER_START_ORDER)
+        self.wait_invisibility_element(LOADER_OVERLAY)
         new_number_order = self.get_text(NUMBER_INFO_ORDER)
         self.click_close_place_order()
         return new_number_order

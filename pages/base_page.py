@@ -36,6 +36,7 @@ class BasePage:
 
     @allure.step('Получить кликабельный элемент')
     def find_clickable_element(self, locator):
+        self.wait_invisibility_element(LOADER_OVERLAY)
         WebDriverWait(self.driver, 200).until(expected_conditions.element_to_be_clickable(locator))
         return self.driver.find_element(*locator)
 
@@ -46,11 +47,7 @@ class BasePage:
 
     @allure.step('Ждать исчезновения элемента')
     def wait_invisibility_element(self, locator):
-        return WebDriverWait(self.driver, 30).until(expected_conditions.invisibility_of_element_located(locator))
-
-    @allure.step('Прокрутить к элементу')
-    def scroll_to_element(self, locator):
-        self.driver.execute_script('arguments[0].scrollIntoView();', self.driver.find_element(*locator))
+        return WebDriverWait(self.driver, 40).until(expected_conditions.invisibility_of_element_located(locator))
 
     @allure.step('Получить текста')
     def get_text(self, locator):
@@ -61,10 +58,6 @@ class BasePage:
     def get_type_input(self, locator):
         text = self.find_clickable_element(locator).get_attribute("type")
         return text
-
-    @allure.step('Перейти на другую вкладку')
-    def switch_to_new_tab(self):
-        self.driver.switch_to.window(self.driver.window_handles[1])
 
     @allure.step('Получить URL текущей страницы')
     def get_current_url(self):
