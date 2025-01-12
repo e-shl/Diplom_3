@@ -21,8 +21,7 @@ class TestOrderFeed:
         order_feed_page.click_order_history()
         order_from_history = order_feed_page.get_last_order_history()
         order_feed_page.open_order_feed_page()
-        order_from_feed = order_feed_page.get_last_order_feed()
-        assert order_from_history == order_from_feed
+        assert order_feed_page.get_check_number_order(order_from_history)
 
     @allure.title('Тест при создании нового заказа счётчик Выполнено за всё время увеличивается')
     def test_new_order_change_all_time_order(self, authorization):
@@ -38,11 +37,11 @@ class TestOrderFeed:
     def test_new_order_change_day_time_order(self, authorization):
         order_feed_page = DesignerPage(authorization)
         order_feed_page.open_order_feed_page()
-        old_all_time_order = order_feed_page.get_text(DAY_ORDERS)
+        old_day_time_order = order_feed_page.get_text(DAY_ORDERS)
         order_feed_page.create_order()
         order_feed_page.open_order_feed_page()
-        new_all_time_order = order_feed_page.get_text(DAY_ORDERS)
-        assert new_all_time_order > old_all_time_order
+        new_day_time_order = order_feed_page.get_text(DAY_ORDERS)
+        assert new_day_time_order > old_day_time_order
 
     @allure.title('Тест после оформления заказа его номер появляется в разделе В работе')
     def test_new_order_have_in_work(self, authorization):

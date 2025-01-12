@@ -13,30 +13,35 @@ class BasePage:
     @allure.step("Открыть Главную страницу")
     def open_base_page(self):
         self.driver.get(BASE_URL)
+        self.wait_invisibility_element(LOADER_OVERLAY)
 
     @allure.step("Открыть страницу Войти")
     def open_login_page(self):
         self.driver.get(LOGIN_PAGE_URL)
+        self.wait_invisibility_element(LOADER_OVERLAY)
 
     @allure.step("Открыть страницу Лента Заказов")
     def open_order_feed_page(self):
         self.driver.get(ORDER_FEED_PAGE_URL)
+        self.wait_invisibility_element(LOADER_OVERLAY)
 
     @allure.step("Нажать кнопку Конструктор")
     def click_button_header_designer(self):
         self.find_clickable_element(BUTTON_HEADER_DESIGNER).click()
+        self.wait_invisibility_element(LOADER_OVERLAY)
 
     @allure.step("Нажать кнопку Лента заказов")
     def click_button_header_order_feed(self):
         self.find_clickable_element(BUTTON_HEADER_ORDER_FEED).click()
+        self.wait_invisibility_element(LOADER_OVERLAY)
 
     @allure.step("Открыть страницу Личный кабинет")
     def open_profile_page(self):
         self.driver.get(PROFILE_PAGE_URL)
+        self.wait_invisibility_element(LOADER_OVERLAY)
 
     @allure.step('Получить кликабельный элемент')
     def find_clickable_element(self, locator):
-        self.wait_invisibility_element(LOADER_OVERLAY)
         WebDriverWait(self.driver, 200).until(expected_conditions.element_to_be_clickable(locator))
         return self.driver.find_element(*locator)
 

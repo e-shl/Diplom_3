@@ -12,6 +12,7 @@ class DesignerPage (BasePage):
     @allure.step("Нажать на ингридиент")
     def click_ingredient(self):
         self.find_clickable_element(COUNTER_INGREDIENT).click()
+        self.wait_invisibility_element(LOADER_OVERLAY)
 
     @allure.step("Нажать на ингридиент")
     def click_close_info_ingredient(self):
@@ -26,6 +27,7 @@ class DesignerPage (BasePage):
     @allure.step("Нажать кнопку Оформить заказ")
     def click_place_order(self):
         self.find_clickable_element(BUTTON_PLACE_ORDER).click()
+        self.wait_invisibility_element(LOADER_OVERLAY)
 
     @allure.step("Нажать кнопку Закрыть окно Заказ создан")
     def click_close_place_order(self):

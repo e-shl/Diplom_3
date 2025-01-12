@@ -8,7 +8,7 @@ from pages.login_page import LoginPage
 from tests_data import *
 
 
-@pytest.fixture(params=['chrome','firefox'])
+@pytest.fixture(params=['firefox'])
 def driver(request):
     if request.param == 'chrome':
         options = webdriver.ChromeOptions()

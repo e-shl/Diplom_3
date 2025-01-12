@@ -10,6 +10,7 @@ class ProfilePage (BasePage):
     @allure.step("Нажать кнопку Личный кабинет")
     def click_button_header_profile(self):
         self.find_clickable_element(BUTTON_LINK_PROFILE).click()
+        self.wait_invisibility_element(LOADER_OVERLAY)
 
     @allure.step("Нажать кнопку Личный кабинет")
     def click_order_history(self):
