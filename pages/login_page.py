@@ -13,11 +13,6 @@ class LoginPage (BasePage):
         self.find_clickable_element(BUTTON_LINK_FORGOT_PASSWORD).click()
         self.wait_invisibility_element(LOADER_OVERLAY)
 
-    @allure.step("Открыть страницу Восстановление пароля")
-    def open_forgot_password_page(self):
-        self.driver.get(FORGOT_PASSWORD_PAGE_URL)
-        self.wait_invisibility_element(LOADER_OVERLAY)
-
     @allure.step("Заполнить поле Email")
     def send_email(self, email):
         self.find_clickable_element(FILED_EMAIL).send_keys(email)

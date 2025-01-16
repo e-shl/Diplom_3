@@ -32,12 +32,10 @@ def authorization(driver):
     login_page.find_clickable_element(FILED_PASSWORD).send_keys(BASE_PASSWORD)
     login_page.find_clickable_element(BUTTON_LOGIN).click()
     login_page.find_clickable_element(BUTTON_PLACE_ORDER)
-    yield driver
-    driver.quit()
+    return driver
 
 @pytest.fixture
 def authorization_place_order(authorization):
     designer_page = DesignerPage(authorization)
     designer_page.create_order()
-    yield authorization
-    authorization.quit()
+    return authorization
