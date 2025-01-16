@@ -43,3 +43,23 @@ class DesignerPage (BasePage):
         new_number_order = self.get_text(NUMBER_INFO_ORDER)
         self.click_close_place_order()
         return new_number_order
+
+    @allure.step("Ожидание кнопки Войти в аккаунт")
+    def check_button_login_account(self):
+        return self.find_clickable_element(BUTTON_LOGIN_ACCOUNT)
+
+    @allure.step("Ожидание кнопки Войти в аккаунт")
+    def check_button_login_account(self):
+        return self.find_clickable_element(BUTTON_LOGIN_ACCOUNT)
+
+    @allure.step("Ожидание Список ленты заказов")
+    def check_list_order(self):
+        return self.find_clickable_element(LIST_ORDER_FEED)
+
+    @allure.step("Ожидание Детали ингредиента")
+    def check_info_ingredient(self):
+        return self.find_clickable_element(INFO_INGREDIENT)
+
+    @allure.step("Ожидание окна Заказ создан - Ваш заказ начали готовить")
+    def check_window_start_order(self):
+        return self.find_clickable_element(WINDOW_START_ORDER)

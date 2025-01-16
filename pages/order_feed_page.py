@@ -22,3 +22,7 @@ class OrderFeedPage (BasePage):
     @allure.step("Проверить существование последнего номера заказа в Ленте заказов")
     def get_check_number_order(self, last_order):
         return self.find_clickable_element((By.XPATH, f'//*[contains(@class,"rderHistory_textBox__")]//*[contains(@class,"text_type_digits-default") and contains(text(),"{last_order}")]'))
+
+    @allure.step("Ожидание Окно информации о заказе")
+    def check_window_info_order(self):
+        return self.find_clickable_element(INFO_ORDER)

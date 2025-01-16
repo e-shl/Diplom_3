@@ -28,10 +28,10 @@ def driver(request):
 def authorization(driver):
     login_page = LoginPage(driver)
     login_page.open_login_page()
-    login_page.find_clickable_element(FILED_EMAIL).send_keys(BASE_EMAIL)
-    login_page.find_clickable_element(FILED_PASSWORD).send_keys(BASE_PASSWORD)
-    login_page.find_clickable_element(BUTTON_LOGIN).click()
-    login_page.find_clickable_element(BUTTON_PLACE_ORDER)
+    login_page.send_email(BASE_EMAIL)
+    login_page.send_password(BASE_PASSWORD)
+    login_page.click_button_login()
+    login_page.check_place_order()
     return driver
 
 @pytest.fixture
